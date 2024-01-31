@@ -1,0 +1,54 @@
+{{#extends "base"}}
+{{#block "title"}}Edit Appointment{{/block}}
+{{#block "content"}}
+    <h2>Editing Appointment Form</h2>
+    <form method="post">
+
+        <div class="mb-3">
+            <label for="memberId" class="form-label">Member Name</label>
+            <select class="form-control" id="memberId" name="member_id">
+                <option id="0">------</option>
+                {{#each members}}
+                    <option value="{{this.member_id}}"
+                        {{#eq this.member_id ../appointmentToEdit.appointment_id}}
+                            selected
+                        {{/eq}}>{{this.member_id}} {{this.first_name}} {{this.last_name}} </option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="serviceId" class="form-label">Your Preferred Service</label>
+            <select class="form-control" id="serviceId" name="service_id">
+                <option id="0">------</option>
+                {{#each services}}
+                    <option value="{{this.service_id}}"
+                        {{#eq this.service_id ../appointmentToEdit.appointment_id}}
+                            selected
+                        {{/eq}}>{{this.service_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="stylistId" class="form-label">Your Preferred Stylist</label>
+            <select class="form-control" id="stylistId" name="stylist_id">
+                <option id="0">------</option>
+                {{#each stylists}}
+                    <option value="{{this.stylist_id}}"
+                        {{#eq this.stylist_id ../appointmentToEdit.appointment_id}}
+                            selected
+                        {{/eq}}>{{this.stylist_name}} | {{this.designation}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="mb-3">
+                <label for="datetime" class="form-label">Your Preferred Date and Time [enter in YYYY-MM-DD hh:mm:ss format, subject to availability]</label>
+                <input type="text" class="form-control" id="datetime" name="datetime" required>
+            </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{{/block}}
+{{/extends}}

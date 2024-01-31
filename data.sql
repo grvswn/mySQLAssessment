@@ -6,7 +6,7 @@ VALUES
   ('Alice', 'Smith', '+9876543210'),
   ('Bob', 'Johnson', '+5551234567');
 
-INSERT INTO stylists (name, designation)
+INSERT INTO stylists (stylist_name, designation)
 VALUES
   ('Emma Thompson', 'Senior Stylist'),
   ('David Smith', 'Color Specialist'),
@@ -14,7 +14,7 @@ VALUES
   ('Michael Johnson', 'Style Consultant'),
   ('Sophia Lee', 'Master Stylist');
 
-INSERT INTO services (name, cost)
+INSERT INTO services (service_name, cost)
 VALUES
   ('Haircut', 2000),
   ('Hair Color', 5000),
@@ -30,10 +30,10 @@ VALUES
   ('Hair Spray', 'HoldItRight'),
   ('Flat Iron', 'SmoothStyle');
 
-INSERT INTO appointments (member_id, stylist_id, service_id, datetime, venue, points)
+INSERT INTO appointments (member_id, stylist_id, service_id, datetime)
 VALUES
-  (1, 3, 1, "2024/04/31:14:30:00", "salon chair 1", 400);
+  (1, 3, 1, "2024-04-24 14:30:00");
 
 INSERT INTO transactions (service_id, appointment_id, reward_id)
 VALUES
-  (1, 1);
+  (1, 1, 1);

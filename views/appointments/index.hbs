@@ -1,0 +1,31 @@
+{{#extends "base"}}
+{{#block "title"}}Appointment List{{/block}}
+{{#block "content"}}
+    <h1>Salon Appointment List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Member Name</td>
+                <td>Service</td>
+                <td>Stylist</td>
+                <td>Date/Time</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each appointments}}
+            <tr>
+                <td>{{this.first_name}} {{this.last_name}}</td>
+                <td>{{this.service_name}}</td>
+                <td>{{this.stylist_name}}</td>
+                <td>{{this.datetime}}</td>
+                <td>
+                    <a href="/appointments/{{this.appointment_id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="/appointments/{{this.appointment_id}}/update" class="btn btn-success btn-sm">Update</a> 
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{/block}}
+
+{{/extends}}
