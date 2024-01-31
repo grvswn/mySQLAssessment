@@ -25,6 +25,10 @@ async function main() {
         password: process.env.DB_PASSWORD
     });
 
+    app.get('/', async function (req, res) {
+        res.send('Express + MySQL Assessment')
+    });
+
     app.get('/appointments', async function (req, res) {
         const [appointments] = await connection.execute(`
             SELECT * from appointments

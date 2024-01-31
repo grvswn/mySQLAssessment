@@ -1,7 +1,7 @@
 {{#extends "base"}}
 {{#block "title"}}Edit Appointment{{/block}}
 {{#block "content"}}
-    <h2>Editing Appointment Form</h2>
+    <h1>Editing Appointment Form</h1>
     <form method="post">
 
         <div class="mb-3">
@@ -10,7 +10,7 @@
                 <option id="0">------</option>
                 {{#each members}}
                     <option value="{{this.member_id}}"
-                        {{#eq this.member_id ../appointmentToEdit.appointment_id}}
+                        {{#eq this.member_id ../appointmentToEdit.member_id}}
                             selected
                         {{/eq}}>{{this.member_id}} {{this.first_name}} {{this.last_name}} </option>
                 {{/each}}
@@ -23,7 +23,7 @@
                 <option id="0">------</option>
                 {{#each services}}
                     <option value="{{this.service_id}}"
-                        {{#eq this.service_id ../appointmentToEdit.appointment_id}}
+                        {{#eq this.service_id ../appointmentToEdit.service_id}}
                             selected
                         {{/eq}}>{{this.service_name}}</option>
                 {{/each}}
@@ -36,7 +36,7 @@
                 <option id="0">------</option>
                 {{#each stylists}}
                     <option value="{{this.stylist_id}}"
-                        {{#eq this.stylist_id ../appointmentToEdit.appointment_id}}
+                        {{#eq this.stylist_id ../appointmentToEdit.stylist_id}}
                             selected
                         {{/eq}}>{{this.stylist_name}} | {{this.designation}}</option>
                 {{/each}}
