@@ -1,0 +1,15 @@
+{{#extends "base"}}
+{{#block "title"}}Delete Member{{/block}}
+{{#block "content"}}
+<div class="mt-2 alert alert-danger">
+    Are you sure you want to delete membership account of {{memberToDelete.first_name}} {{memberToDelete.last_name}}[{{memberToDelete.contact_number}}]?
+    <div>
+        <form method="POST">
+            <button class="btn btn-danger">Yes</button>
+            <a href="/members" class="btn btn-success">No</a>
+        </form>
+    </div>
+</div>
+{{/block}}
+
+{{/extends}}

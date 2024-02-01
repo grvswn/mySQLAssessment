@@ -1,0 +1,26 @@
+{{#extends "base"}}
+{{#block "title"}}Create New Member{{/block}}
+{{#block "content"}}
+    <h1>Salon Membership Form</h1>
+    <form method="post"> 
+
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="first_name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="last_name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactNumber" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="contactNumber" name="contact_number" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+{{/block}}
+{{/extends}}

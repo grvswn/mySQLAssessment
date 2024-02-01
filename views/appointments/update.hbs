@@ -12,7 +12,7 @@
                     <option value="{{this.member_id}}"
                         {{#eq this.member_id ../appointmentToEdit.member_id}}
                             selected
-                        {{/eq}}>{{this.member_id}} {{this.first_name}} {{this.last_name}} </option>
+                        {{/eq}}>{{this.first_name}} {{this.last_name}} [{{this.contact_number}}]</option>
                 {{/each}}
             </select>
         </div>

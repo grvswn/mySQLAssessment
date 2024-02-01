@@ -1,0 +1,24 @@
+{{#extends "base"}}
+{{#block "title"}}Update Member{{/block}}
+{{#block "content"}}
+    <h2>Changing Membership Details Form</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="first_name" value="{{memberToEdit.first_name}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="last_name" value="{{memberToEdit.last_name}}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="contactNumber" class="form-label">Contact Number</label>
+            <input type="text" class="form-control" id="contactNumber" name="contact_number" value="{{memberToEdit.contact_number}}">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{{/block}}
+{{/extends}}

@@ -26,8 +26,65 @@ async function main() {
     });
 
     app.get('/', async function (req, res) {
-        res.send('Express + MySQL Assessment')
+        res.render('index')
     });
+
+    app.get('/members', async function (req, res) {
+        const [members] = await connection.execute(`
+            SELECT * from members
+        `);
+        res.render('members/index', {
+            members
+        })
+    });
+
+    app.get('/members/create', async function (req, res) {
+        res.render("members/create");
+    });
+
+    app.post('/members/create', async function (req, res) {
+        const { first_name, last_name, contact_number } = req.body;
+        const query = `
+             INSERT INTO members (first_name, last_name, contact_number) 
+             VALUES (?, ?, ?)
+        `;
+        const bindings = [first_name, last_name, contact_number];
+        await connection.execute(query, bindings);
+        res.redirect('/members');
+    });
+
+    app.get('/members/:member_id/delete', async function (req, res) {
+        const sql = "select * from members where member_id = ?";
+        const [members] = await connection.execute(sql, [req.params.member_id]);
+        const memberToDelete = members[0];
+        res.render('members/delete', {
+            memberToDelete
+        })
+    });
+
+    app.post('/members/:member_id/delete', async function (req, res) {
+        const query = "DELETE FROM members WHERE member_id = ?";
+        await connection.execute(query, [req.params.member_id]);
+        res.redirect('/members');
+    });
+
+    app.get('/members/:member_id/update', async function (req, res) {
+        const query = "SELECT * FROM members WHERE member_id = ?";
+        const [members] = await connection.execute(query, [req.params.member_id]);
+        const memberToEdit = members[0];
+
+        res.render('members/update', {
+            memberToEdit
+        })
+    });
+
+    app.post('/members/:member_id/update', async function (req, res) {
+        const { first_name, last_name, contact_number } = req.body;
+        const query = `UPDATE members SET first_name=?, last_name=?, contact_number=? WHERE member_id = ?`;
+        const bindings = [first_name, last_name, contact_number, req.params.member_id];
+        await connection.execute(query, bindings);
+        res.redirect('/members');
+    })
 
     app.get('/appointments', async function (req, res) {
         const [appointments] = await connection.execute(`

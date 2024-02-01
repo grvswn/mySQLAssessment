@@ -1,0 +1,30 @@
+{{#extends "base"}}
+{{#block "title"}}Members List{{/block}}
+{{#block "content"}}
+    <h1>Salon Members List</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td>Contact Number</td>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each members}}
+            <tr>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.contact_number}}</td>
+                <td>
+                    <a href="/members/{{this.member_id}}/delete" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="/members/{{this.member_id}}/update" class="btn btn-success btn-sm">Update</a> 
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/members/create" class="btn btn-primary">New Member Form</a>
+{{/block}}
+
+{{/extends}}
